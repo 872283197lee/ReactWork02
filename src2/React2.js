@@ -441,9 +441,76 @@ ReactDOM.render(
     document.getElementById('example11')
 );
 
-//
 //当你需要从子组件中更新父组件的 state 时，
 // 你需要在父组件通过创建事件句柄 (handleChange) ，
 // 并作为 prop (updateStateProp)
 // 传递到你的子组件上。实例如下：
+
+
+var Content3 = React.createClass({
+    render:function () {
+        return <div>
+            <button onClick={this.props.updateStateProp}>点我</button>
+            <h4>{this.props.myDateProp}</h4>
+        </div>
+    }
+});
+
+var HelloMessage6 = React.createClass({
+    getInitialState:function () {
+        return {value:'Hello Runoob!'};
+    },
+    handleChange:function (event) {
+        this.setState({value:'菜鸟教程'})
+    },
+    render:function () {
+        var value = this.state.value;
+        return <div>
+            <Content3 myDateProp = {value}
+            updateStateProp = {this.handleChange}></Content3>
+        </div>;
+    }
+});
+
+ReactDOM.render(
+    <HelloMessage6/>,
+    document.getElementById('example12')
+)
+
+var MyComponent = React.createClass({
+    handleClick:function () {
+        //使用原生的　DOM API获取焦点
+        this.refs.myInput.focus();
+    },
+    render:function () {
+        //当组件插入到DOM后，ref属性添加一个组件的引用于到this.refs
+        return(
+            <div>
+                <input type="text" ref="myInput" />
+                <input
+                    type="button"
+                    value="点我输入框获取焦点"
+                    onClick={this.handleClick}/>
+            </div>
+        );
+    }
+});
+
+ReactDOM.render(
+    <MyComponent/>,
+    document.getElementById('example13')
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
