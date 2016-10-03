@@ -441,6 +441,7 @@ ReactDOM.render(
     document.getElementById('example11')
 );
 
+//
 //当你需要从子组件中更新父组件的 state 时，
 // 你需要在父组件通过创建事件句柄 (handleChange) ，
 // 并作为 prop (updateStateProp)
